@@ -11,12 +11,23 @@ use App\Services\ToolService;
 use System\Redirect;
 use System\Request;
 use System\Response;
+use eftec\bladeone\BladeOne;
 
 class IndexController extends Controller {
 
     public function index(Request $request){
 
         dd($request->all());
+    }
+
+    public function login(Request $request){
+        $data = [];
+        return Response::view("login", $data);
+    }
+
+    public function register(Request $request){
+        $data = [];
+        return Response::html("register", $data);
     }
 
     public function tools(Request $request){

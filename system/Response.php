@@ -3,6 +3,7 @@
 namespace System;
 
 use App\Libs\MessageCode;
+use System\Blade\BladeOne;
 
 class Response{
 
@@ -26,6 +27,13 @@ class Response{
         $str = ob_get_contents();
         ob_end_clean();
         return $str;
+    }
+
+    public static function view($template, $data = []){
+        $views = VIEW_PATH;
+        $cache = CACHE_PATH;
+        $blade = new BladeOne($views,$cache,BladeOne::MODE_DEBUG);
+        return $blade->run($template, $data);
     }
 
     public static function image($img){

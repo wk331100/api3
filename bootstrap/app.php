@@ -5,6 +5,8 @@ define('ROOT_PATH', __DIR__ . DIRECTORY_SEPARATOR . '..');
 define('APP_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'app');
 define('IMG_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'storage/img');
 define('VIEW_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'app/Views');
+define('STORAGE_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'storage');
+define('CACHE_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'storage/cache');
 
 //require __DIR__.'/../vendor/autoload.php';
 require __DIR__ . '/../system/autoload.php';

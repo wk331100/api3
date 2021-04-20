@@ -13,6 +13,8 @@
 use System\Route;
 
 Route::get('/', 'IndexController@index');
+Route::get('/login', 'IndexController@login');
+Route::get('/register', 'IndexController@register');
 
 
 
