@@ -39,6 +39,10 @@ class Redis{
         $this->_connector->setex($key, $ttl, $val);
     }
 
+    public function expire($key, $ttl){
+        return $this->_connector->expire($key, $ttl);
+    }
+
 
     public function get($key){
         return $this->_connector->get($key);

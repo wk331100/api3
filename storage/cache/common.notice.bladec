@@ -6,9 +6,9 @@
 <?php } ?>
 
 
-<?php if (!empty($err)) { ?>
+<?php if (!empty($error)) { ?>
 <div class="alert alert-danger alert-dismissible fade show fs-7" role="alert">
- <?=$err?>
+ <?=$error?>
  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php } ?>

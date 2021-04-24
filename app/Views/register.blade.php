@@ -11,7 +11,8 @@
     <meta content="" name="author" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+{{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--}}
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/all.min.css">
@@ -30,36 +31,23 @@
 
         <!-- begin login-content -->
         <div class="login-content">
-            <form action="/register/doRegister" method="POST" class="margin-bottom-0">
-                @csrf
-                @if(!empty(session('error')))
-                    @foreach(session('error') as $item)
-                    <div class="alert alert-danger fade show label">
-                        <span class="close" data-dismiss="alert">×</span>
-                        <strong>错误!</strong>
-                        {{$item}}
-                    </div>
-                    @endforeach
-                @endif
-                <div class="form-group m-b-20">
-                    <input type="text" name="phone" id="phone" class="form-control" placeholder="手机号" required />
+            <form action="/register" method="POST" onsubmit="return checkForm()" class="margin-bottom-0">
+                @include("common.notice")
+                <div class="form-group">
+                    <input type="text" name="email" id="email" class="form-control  mb-3" placeholder="邮箱" required />
                 </div>
-                <div class="form-group m-b-15 clearfix">
-                    <input type="text" name="code" class="form-control code pull-left" placeholder="验证码" required />
-                    <button type="button" id="send-button" class="btn btn-sm btn-outline-info pull-left" style="margin-top: 3px" onclick="sendCode();">发送验证码</button>
+                <div class="form-group ">
+                    <input type="password" name="password" class="form-control  mb-3" placeholder="密码" required />
                 </div>
-                <div class="form-group m-b-15">
-                    <input type="password" name="password" class="form-control" placeholder="密码" required />
-                </div>
-                <div class="form-group m-b-15">
-                    <input type="password" name="password_repeat" class="form-control" placeholder="重复密码" required />
+                <div class="form-group">
+                    <input type="password" name="password_repeat" class="form-control  mb-4" placeholder="重复密码" required />
                 </div>
                 <div class="login-buttons">
-                    <button type="submit" class="btn btn-outline-success btn-block  ">注册</button>
+                    <button type="submit" class="btn btn-outline-primary form-control ">注册</button>
                 </div>
-                <hr />
+                <hr class="mt-4" />
                 <p class="text-center label">
-                    &copy; http://blog.getcoder.cn All Right Reserved 2019
+                    Api3.cc©2021 Powered By Kunkka Wu
                 </p>
             </form>
         </div>
@@ -71,8 +59,9 @@
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="/editor/third-party/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+{{--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>--}}
 <script src="/js/main.js"></script>
 <!-- ================== END BASE JS ================== -->
 
@@ -81,42 +70,16 @@
 
 <script>
     let count = 59;
-    function sendCode() {
-        let url = '/register/sendCode'
-        let phone = $('#phone').val();
-        let data = 'phone=' + phone;
-        if(phone == ''){
-            alert('手机号不能为空');
+    function checkForm() {
+        let email = $('#email').val();
+        var myReg=/^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
+
+        if(myReg.test(email)){
+            return true;
+        } else {
+            alert("邮箱格式不正确!");
             return false;
         }
-
-        $.ajax({
-            type: "POST",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            url: url ,//url
-            data: data,
-            success: function (result) {
-                console.log(result);//打印服务端返回的数据(调试用)
-                if (result.code == 200) {
-                    $('#send-button').html('发送成功 60');
-                    $('#send-button').attr('disabled', 'disabled');
-                    var codeTimer = setInterval(function(){
-                        $('#send-button').html('发送成功 ' + count);
-                        count--;
-                        if(count <= 0){
-                            clearInterval(codeTimer);
-                            $('#send-button').html('发送验证码');
-                            $('#send-button').removeAttr('disabled')
-                        }
-                    }, 1000);
-                } else {
-                    alert('错误: ' + result.msg + '【code:' + result.code + '】');
-                }
-            },
-            error : function() {
-                alert("异常！");
-            }
-        });
     }
 
 

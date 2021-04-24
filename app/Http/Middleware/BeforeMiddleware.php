@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Libs\MessageCode;
 use App\Libs\RedisKey;
 use App\Libs\Util;
+use App\Services\SecureService;
 use System\Redirect;
 use System\Redis;
 use System\Request;
@@ -13,19 +14,15 @@ use System\Response;
 class BeforeMiddleware{
 
     public function handle(Request $request){
-        $requestId = Util::randChar();
+        $requestId = Util::randChar(16);
         $request->setParam('request_id', strtoupper($requestId));
 
         $ip = $request->input('ip');
         //统计在线IP
         self::countOnlineIP($ip);
         //检查用户请求频率
-        $time = date("YmdHi");
-        $clientKey = RedisKey::getClientKey($ip, $time);
-        $redis = new Redis();
-        $num = $redis->incr($clientKey);
-        if ($num > 60){
-            echo json_encode(Response::fake(MessageCode::FAKE_ERROR));
+        if (!SecureService::CheckViolenceRequest($ip)){
+            echo json_encode(Response::fake(MessageCode::FAKE_REQUEST_ERROR));
             die();
         }
     }

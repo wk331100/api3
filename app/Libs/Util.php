@@ -14,6 +14,16 @@ class Util
         return self::makeWebCode($length);
     }
 
+    /**
+     * 生成密码
+     * @param $password
+     * @param $randChar
+     * @return string
+     */
+    public static function makePassword($password, $randChar){
+        return md5(md5($password) . $randChar);
+    }
+
 
     /**
      * 生成web随机码

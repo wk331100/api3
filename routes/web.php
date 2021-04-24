@@ -13,8 +13,8 @@
 use System\Route;
 
 Route::get('/', 'IndexController@index');
-Route::get('/login', 'IndexController@login');
-Route::get('/register', 'IndexController@register');
+Route::any('/login', 'IndexController@login');
+Route::any('/register', 'IndexController@register');
 
 
 

@@ -9,7 +9,10 @@ class Constants{
     const UNDEFINED = '--';
 
     const SUCCESS   = 'success';
-    const ERR       = 'err';
+    const ERROR       = 'error';
+
+    const METHOD_GET = 'GET';
+    const METHOD_POST = 'POST';
 
     const FEEDBACK_SUCCESS = '感谢您的反馈，我们会尽快处理！';
 

@@ -30,6 +30,17 @@ class UserModel extends DB  {
         return DBMysql::table($this->table)->where(['phone'=> $phone])->first();
     }
 
+    public function checkEmailExist($email){
+        if (empty(DBMysql::table($this->table)->where(['email'=> $email])->first())) {
+            return false;
+        }
+        return true;
+    }
+
+    public function getInfoByEmail($email){
+        return DBMysql::table($this->table)->where(['email'=> $email])->first();
+    }
+
     public function getSafeInfo($uid){
         $userInfo = $this->getInfo($uid);
         unset($userInfo->rand_char);
