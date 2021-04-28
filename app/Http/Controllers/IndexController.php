@@ -16,7 +16,7 @@ class IndexController extends Controller {
 
     public function index(Request $request){
 
-        return Response::view("index", $this->data);
+        return Response::view("home", $this->data);
     }
 
     public function login(Request $request){
