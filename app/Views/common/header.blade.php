@@ -16,16 +16,16 @@
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assets/plugins/font-awesome/css/all.min.css" rel="stylesheet" />
     <link href="/assets/plugins/animate/animate.min.css" rel="stylesheet" />
-    <link href="/assets/css/transparent/style.min.css" rel="stylesheet" />
-    <link href="/assets/css/transparent/style-responsive.min.css" rel="stylesheet" />
-    <link href="/assets/css/transparent/theme/default.css" rel="stylesheet" id="theme" />
+    <link href="/assets/css/default/style.min.css" rel="stylesheet" />
+    <link href="/assets/css/default/style-responsive.min.css" rel="stylesheet" />
+    <link href="/assets/css/default/theme/default.css" rel="stylesheet" id="theme" />
     <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="/assets/plugins/pace/pace.min.js"></script>
     <!-- ================== END BASE JS ================== -->
 
-    <link href="/css/main.css" rel="stylesheet" id="theme" />
+    <link href="/css/main.css" rel="stylesheet" />
 </head>
 <body>
 <!-- begin page-cover -->

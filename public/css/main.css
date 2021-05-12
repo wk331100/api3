@@ -1,3 +1,13 @@
 .sidebar .sub-menu{
     padding: 5px 0px 10px 5px;
 }
+.sidebar-btn .btn{
+    padding: 5px 8px !important;
+}
+.sidebar .sub-menu>li:after, .sidebar .sub-menu>li:before{
+    content: none;
+}
+
+.sidebar .sub-menu>li{
+    line-height: 22px;
+}

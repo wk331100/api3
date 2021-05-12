@@ -6,9 +6,9 @@
         <ul class="nav">
             <li class="nav-profile">
                 <div class="info ">
-                    <div class="btn-group btn-group-justified ">
-                        <a class="btn btn-default"><i class="fa fa-plus"></i> 新接口</a>
-                        <a class="btn btn-gray"><i class="fa fa-plus"></i> 新模块</a>
+                    <div class="btn-group btn-group-justified sidebar-btn">
+                        <a class="btn btn-purple"><i class="fa fa-plus"></i> 新接口</a>
+                        <a class="btn btn-purple"><i class="fa fa-plus"></i> 新模块</a>
                     </div>
                 </div>
             </li>
@@ -16,26 +16,34 @@
         <!-- end sidebar user -->
         <!-- begin sidebar nav -->
         <ul class="nav">
-            <li class="nav-header">Navigation</li>
+            <li class="nav-header"><a href="">
+                    <i class="fa fa-barcode m-r-10"></i> <span>全部接口</span></a>
+            </li>
             <li class="has-sub">
                 <a href="javascript:;">
                     <b class="caret" ></b>
-                    <i class="fa fa-th-large"></i>
+                    <i class="fa fa-folder-open"></i>
                     <span>任务模块</span>
                 </a>
 
+
                 <ul class="sub-menu">
-                    <li><a href="/"><span class="label label-default m-r-10">GET</span> 获取任务列表</a></li>
-                    <li><a href="/"><span class="label label-default btn-sm m-r-10">POST</span> 添加任务</a></li>
-                    <li><a href="/"><span class="label label-default m-r-10">PUT</span> 修改任务</a></li>
-                    <li><a href="/"><span class="label label-default m-r-10">DEL</span> 删除任务</a></li>
+                    <li class="clearfix">
+                        <a href=""><span class="label label-success m-r-10 ">GET</span> 获取任务列表</a>
+                    </li>
+
+
+
+                    <li><a href="/"><span class="label label-primary btn-sm m-r-10">POST</span> 添加任务</a></li>
+                    <li><a href="/"><span class="label label-warning m-r-10">PUT</span> 修改任务</a></li>
+                    <li><a href="/"><span class="label label-danger m-r-10">DEL</span> 删除任务</a></li>
                     <li><a href="/"><button class="btn btn-white btn-sm "> 添加接口 </button></a></li>
                 </ul>
             </li>
             <li class="has-sub">
                 <a href="javascript:;">
                     <b class="caret"></b>
-                    <i class="fa fa-th-large"></i>
+                    <i class="fa fa-folder-open"></i>
                     <span>任务模块</span>
                 </a>
                 <ul class="sub-menu">
